@@ -73,6 +73,11 @@ class ProjectController extends Controller
         $slug = Str::slug($request->name, '-');
         $data['slug'] = $slug;
         $project->update($data);
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
+        } else {
+            $project->technologies()->sync([]);
+        }
         return redirect()->route('admin.projects.show', compact('project'));
     }
 

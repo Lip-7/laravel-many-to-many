@@ -28,7 +28,6 @@ class UpdateProjectRequest extends FormRequest
             ],
             'gitUrl' => 'required|max:255|min:3',
             'framework_id' => 'required',
-            'tecnologies' => 'required|max:255|min:3',
             'description' => 'required|min:10',
         ];
     }
