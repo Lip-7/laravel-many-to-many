@@ -15,17 +15,32 @@ class Project_TechnologySeeder extends Seeder
      */
     public function run(): void
     {
-        $projects = Project::all();
+        /* $projects = Project::all();
         foreach ($projects as $project) {
             $newConnection = new Project_Technology;
             $newConnection->project_id = $project->id;
             $techArray = explode(', ', $project->tecnologies);
             foreach ($techArray as $tech) {
                 $realtech = Technology::where('name', $tech)->first();
+                dd($realtech);
                 $newConnection->technology_id = $realtech->id;
                 $newConnection->save();
             }
 
+        } */
+        $projects = Project::all();
+        foreach ($projects as $project) {
+            $techArray = explode(', ', $project->tecnologies);
+            $techIdArray = [];
+            foreach ($techArray as $tech) {
+                $realTech = Technology::where('name', $tech)->first();
+                $techIdArray[] = $realTech->id;
+            }
+            $project->technologies()->attach($techIdArray);
+
+
         }
+
+
     }
 }

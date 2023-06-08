@@ -14,4 +14,7 @@ class Project extends Model
     public function framework() {
         return $this->belongsTo(Framework::class);
     }
+    public function technologies() {
+        return $this->belongsToMany(Technology::class);
+    }
 }
