@@ -30,17 +30,15 @@ class Project_TechnologySeeder extends Seeder
         } */
         $projects = Project::all();
         foreach ($projects as $project) {
-            $techArray = explode(', ', $project->tecnologies);
+            $i = 0;
+            $data = (config('projects')[$i])['tecnologies'];
+            $dataArray = explode(', ', $data);
             $techIdArray = [];
-            foreach ($techArray as $tech) {
+            foreach ($dataArray as $tech) {
                 $realTech = Technology::where('name', $tech)->first();
                 $techIdArray[] = $realTech->id;
             }
             $project->technologies()->attach($techIdArray);
-
-
         }
-
-
     }
 }

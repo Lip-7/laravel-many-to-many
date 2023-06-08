@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('gitUrl');
             $table->text('description');
             //$table->string('framework');
-            $table->string('tecnologies');
+            //$table->string('tecnologies');
             $table->string('slug')->unique();
         });
     }
