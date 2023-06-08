@@ -400,13 +400,19 @@ Buon divertimento</textarea>
                 </div>
                 <div class="content">
                     <textarea>
-Project name: {{$project->name}}
+Project name:
+{{$project->name}}
 
-Project framework: {{$project->framework->name}}
+Project framework:
+{{$project->framework->name}}
 
-Project tecnologies: {{$project->tecnologies}}
+Project tecnologies:
+@foreach ($project->technologies as $tech)
+{{$tech->name}}
+@endforeach
 
-Project description: {{$project->description}}
+Project description:
+{{$project->description}}
                     </textarea>
                 </div>
             </div>
