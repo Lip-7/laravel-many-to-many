@@ -29,9 +29,8 @@ class Project_TechnologySeeder extends Seeder
 
         } */
         $projects = Project::all();
-        foreach ($projects as $project) {
-            $i = 0;
-            $data = (config('projects')[$i])['tecnologies'];
+        foreach ($projects as $key => $project) {
+            $data = (config('projects')[$key])['tecnologies'];
             $dataArray = explode(', ', $data);
             $techIdArray = [];
             foreach ($dataArray as $tech) {
@@ -40,7 +39,6 @@ class Project_TechnologySeeder extends Seeder
             }
             $project->technologies()->sync($techIdArray);
             $techIdArray = [];
-            $i++;
         }
     }
 }
