@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-@extends('layouts.admin')
-
-@section('content')
 <div class="container">
     <div class="">
         <form method="POST" action="{{route('admin.projects.store')}}">
@@ -49,10 +46,18 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-xl-6">
                     <div class="mb-3">
-                        <label for="tecnologies" class="form-label text-capitalize">tecnologies</label>
-                        <input type="text"  value="{{old('tecnologies')}}" name="tecnologies" placeholder="Insert here project's tecnologies" class="form-control @error('tecnologies') is-invalid @enderror" id="tecnologies" aria-describedby="tecnologiesHelp" required>
+                        <label for="tecnologies" class="form-label text-capitalize">Select tecnologies</label>
+                        <div class="form-group d-flex text-center gap-2 flex-wrap">
+                            @foreach ($technologies as $tech)
+                                <div class="d-flex flex-column align-items-center">
+                                    <label for="" class="form-check-label">{{$tech->name}}</label>
+                                    <input type="checkbox" name="technologies[]" value="{{$tech->id}}" class="form-check-input"
+                                    {{in_array($tech->id, old('technologies', [])) ? 'checked' : ''}}>
+                                </div>
+                            @endforeach
+                        </div>
                         @error('tecnologies')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -80,4 +85,4 @@
 </div>
 @endsection
 
-@endsection
+

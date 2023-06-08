@@ -26,8 +26,7 @@ class StoreProjectRequest extends FormRequest
                 'unique:projects', 'required', 'max:150', 'min:3'
             ],
             'gitUrl' => 'required|max:255|min:3',
-            'framework_id' => 'required',
-            'tecnologies' => 'required|max:255|min:3',
+            'framework_id' => 'required|exists:frameworks,id',
             'description' => 'required|min:10',
         ];
     }

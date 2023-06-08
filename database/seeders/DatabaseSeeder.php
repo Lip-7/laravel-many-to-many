@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             FrameworkSeeder::class,
             ProjectSeeder::class,
             TechnologySeeder::class,
+            Project_TechnologySeeder::class,
         ]);
     }
 }

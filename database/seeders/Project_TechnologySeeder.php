@@ -38,7 +38,9 @@ class Project_TechnologySeeder extends Seeder
                 $realTech = Technology::where('name', $tech)->first();
                 $techIdArray[] = $realTech->id;
             }
-            $project->technologies()->attach($techIdArray);
+            $project->technologies()->sync($techIdArray);
+            $techIdArray = [];
+            $i++;
         }
     }
 }

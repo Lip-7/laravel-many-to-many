@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Framework;
+use App\Models\Technology;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -26,7 +27,8 @@ class ProjectController extends Controller
     public function create()
     {
         $frameworks = Framework::all();
-        return view('admin.projects.create', compact('frameworks'));
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('frameworks', 'technologies'));
     }
 
     /**
@@ -38,6 +40,9 @@ class ProjectController extends Controller
         $slug = Str::slug($request->name, '-');
         $data['slug'] = $slug;
         $project = Project::create($data);
+        if($request->has('technologies')) {
+            $project->technologies()->attach($request->technologies);
+        }
         return redirect()->route('admin.projects.show', compact('project'));
     }
 
@@ -55,7 +60,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $frameworks = Framework::all();
-        return view('admin.projects.edit', compact('project', 'frameworks'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'frameworks', 'technologies'));
     }
 
     /**
