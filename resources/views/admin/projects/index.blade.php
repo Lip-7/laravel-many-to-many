@@ -13,7 +13,7 @@
                         alt="{{$project->framework}}" width="140" height="140">
                     <h2>{{ $project->name }}</h2>
                     <p>{{ $project->description }}</p>
-                    <p><a class="btn btn-warning" href="{{route('admin.projects.show', $project)}}" role="button">View details »</a></p>
+                    <p><a class="btn btn-warning" href="{{route('admin.projects.show', $project)}}" role="button">Lunch Project</a></p>
                     <div class="buttons position-absolute d-flex justify-center align-items-center">
                         <a href="{{route('admin.projects.edit', $project)}}"><i class="fa-solid fa-pencil text-success"></i></a>
                         <form method="POST" action="{{route('admin.projects.destroy', $project)}}">

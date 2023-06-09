@@ -33,13 +33,31 @@ $fa-font-path: "../fonts/webfonts" !default;
 }
 .projectsIndex .buttons button {
     color: rgb(165, 33, 33);
-    animation: buttonPopup 0.2s ease-in-out forwards;
     opacity: 0;
 }
 .projectsIndex .buttons a {
-    animation: buttonPopup 0.2s 0.5s ease-in-out forwards;
     opacity: 0;
 }
+.projectsIndex{
+    .col-lg-4{
+        .buttons button {
+            color: rgb(165, 33, 33);
+            opacity: 0;
+        }
+        .buttons>a {
+            opacity: 0;
+        }
+        &:hover{
+            .buttons button {
+                animation: buttonPopup 0.2s ease-in-out forwards;
+            }
+            .buttons>a {
+                animation: buttonPopup 0.2s 0.5s ease-in-out forwards;
+            }
+        }
+    }
+}
+
 
 /* animations */
 
